@@ -43,7 +43,6 @@ fun DetailScreen(
     ){
         MainContent(movie = movie)
     }
-
 }
 
 @Composable

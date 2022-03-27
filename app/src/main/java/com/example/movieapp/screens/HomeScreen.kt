@@ -35,7 +35,7 @@ fun HomeScreen(navController: NavController = rememberNavController()){
                             Icon(imageVector = Icons.Default.MoreVert, contentDescription = "More")
                         }
                         DropdownMenu(expanded = showMenu, onDismissRequest = { showMenu = false }) {
-                            DropdownMenuItem(onClick = { /*TODO*/ }) {
+                            DropdownMenuItem(onClick = { navController.navigate(route = MovieScreens.FavoritesScreen.name) }) {
                                 Row{
                                     Icon(imageVector = Icons.Default.Favorite,
                                         contentDescription = "my favorites",
@@ -55,9 +55,6 @@ fun HomeScreen(navController: NavController = rememberNavController()){
         }
     }
 }
-
-
-
 
 @Composable
 fun MainContent(navController: NavController, movieList: List<Movie>){

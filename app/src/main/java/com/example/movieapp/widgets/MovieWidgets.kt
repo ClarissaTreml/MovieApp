@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
@@ -23,6 +24,7 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.getMovies
+import com.example.movieapp.viewmodel.FavoriteViewModel
 
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -93,6 +95,8 @@ fun MovieRow(movie: Movie = getMovies()[0],
                     }
                 }
             }
+            Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "favorite")
+
         }
     }
 }
@@ -102,11 +106,18 @@ fun HorizontalScrollableImageView(movie: Movie = getMovies()[0]){
     LazyRow{
         items(movie.images){ image ->
             Card(
-                modifier = Modifier.padding(12.dp).size(240.dp),
+                modifier = Modifier
+                    .padding(12.dp)
+                    .size(240.dp),
                 elevation = 4.dp){
                 Image(painter = rememberImagePainter(data = image), contentDescription = "movie image")
             }
 
         }
     }
+}
+
+@Composable
+fun FavoriteIcon(viewModel: FavoriteViewModel){
+
 }

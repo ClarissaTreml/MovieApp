@@ -18,10 +18,11 @@ import com.example.movieapp.models.Movie
 import com.example.movieapp.models.getMovies
 import com.example.movieapp.navigation.MovieScreens
 import com.example.movieapp.ui.theme.MovieAppTheme
+import com.example.movieapp.viewmodel.FavoriteViewModel
 import com.example.movieapp.widgets.MovieRow
 
 @Composable
-fun HomeScreen(navController: NavController = rememberNavController()){
+fun HomeScreen(navController: NavController = rememberNavController(), viewModel: FavoriteViewModel){
     var showMenu by remember{
         mutableStateOf(false)
     }

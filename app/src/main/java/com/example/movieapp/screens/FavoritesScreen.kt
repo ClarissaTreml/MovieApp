@@ -19,12 +19,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.getMovies
 import com.example.movieapp.navigation.MovieScreens
+import com.example.movieapp.viewmodel.FavoriteViewModel
 import com.example.movieapp.widgets.MovieRow
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun FavoritesScreen(
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController(), viewModel: FavoriteViewModel
 ) {
     Scaffold(
         topBar = {

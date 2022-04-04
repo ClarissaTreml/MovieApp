@@ -14,14 +14,16 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.movieapp.models.Movie
 import com.example.movieapp.models.getMovies
+import com.example.movieapp.viewmodel.FavoriteViewModel
 import com.example.movieapp.widgets.HorizontalScrollableImageView
 import com.example.movieapp.widgets.MovieRow
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun DetailScreen(
     navController: NavController = rememberNavController(),
-    movieId: String? = getMovies()[0].id
+    movieId: String? = getMovies()[0].id,
+    viewModel: FavoriteViewModel
     ){
     val movie = filterMovie(movieId = movieId)
 

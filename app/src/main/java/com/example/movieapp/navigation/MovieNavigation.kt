@@ -13,28 +13,40 @@ import com.example.movieapp.screens.HomeScreen
 import com.example.movieapp.viewmodel.FavoriteViewModel
 
 @Composable
-fun MovieNavigation(){
+fun MovieNavigation() {
     val navController = rememberNavController()
     val favoriteViewModel: FavoriteViewModel = viewModel()
 
-    NavHost(navController = navController, startDestination = MovieScreens.Homescreen.name){
+    NavHost(
+        navController = navController,
+        startDestination = MovieScreens.Homescreen.name
+    ) {
 
-        composable(MovieScreens.Homescreen.name){ HomeScreen(navController = navController, viewModel = favoriteViewModel)}
+        composable(route = MovieScreens.Homescreen.name) {
+            HomeScreen(
+                navController = navController,
+                viewModel = favoriteViewModel)
+        }
 
-        composable(
-            route = MovieScreens.DetailScreen.name+"/{movieId}",
+        // url: www.domain.com/detailscreen/movieId=12
+        composable(route = MovieScreens.DetailScreen.name + "/{movieId}",
             arguments = listOf(navArgument(name = "movieId") {
                 type = NavType.StringType
             })
-        ){backStackEntry -> //das ist unser History aus stacks
+        ) {
+
+                backStackEntry -> //das ist unsere History aus stacks
             DetailScreen(
                 navController = navController,
-                movieId = backStackEntry.arguments?.getString( "movieId"),
+                movieId = backStackEntry.arguments?.getString("movieId"),
+                viewModel = favoriteViewModel
+            )
+        }
+
+        composable(route = MovieScreens.FavoritesScreen.name) {
+            FavoritesScreen(
+                navController = navController,
                 viewModel = favoriteViewModel)
         }
-        composable(route = MovieScreens.FavoritesScreen.name){
-            FavoritesScreen(navController = navController, viewModel = favoriteViewModel)
-    }
-
     }
 }

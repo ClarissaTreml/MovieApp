@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.*
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.movieapp.models.getMovies
 import com.example.movieapp.navigation.MovieNavigation
 import com.example.movieapp.ui.theme.MovieAppTheme
 import com.example.movieapp.viewmodel.FavoriteViewModel
@@ -16,9 +17,13 @@ import com.example.movieapp.viewmodel.FavoriteViewModel
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val movies = getMovies()
+        val vm: FavoriteViewModel by viewModels()
+
         setContent {
-            val favoriteViewModel: FavoriteViewModel by viewModels()
-            favoriteViewModel.favoriteMovies
+            //val vm: FavoriteViewModel = viewModel()
+
             MyApp {
                 MovieNavigation()
             }
@@ -66,7 +71,9 @@ fun MyApp(content: @Composable () -> Unit){
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MovieNavigation()
+    MyApp {
+        MovieNavigation()
+    }
 }
 
 
